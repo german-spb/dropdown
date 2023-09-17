@@ -6,25 +6,11 @@ function closeMenu (){
 }
 const value = document.querySelector('.dropdown__value')
 value.addEventListener('click',openMenu )
-
-var machineCode = document.querySelectorAll('.dropdown__item'), index 
-
-let changeItem = (event) =>{
-    index = 1 // ?
-    value.textContent = machineCode[index].textContent
-    event.preventDefault()
-    closeMenu()
-    
+var machineCode = Array.from(document.querySelectorAll('.dropdown__item'))
+machineCode.forEach((item, index) =>{
+    item.onclick = () => {
+        closeMenu()
+        value.textContent = machineCode[index].textContent
+        return false
 }
-machineCode.forEach((button) => {button.addEventListener('click', changeItem)})
-
-
-// let changeItem = (event) => {
-    for (let i = 0; i < machineCode.length; i++) {
-        console.log(machineCode[i].id)
-        
-    }
-// }
-
-
-
+})
